@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="format-detection" content="telephone=no">
+  <title>Car Radio</title>
+  <link rel="icon" href="icon-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main id="screen" aria-live="polite"></main>
+
+  <!-- Mini player: shown on every screen except Now Playing while a station is loaded -->
+  <div id="mini" class="mini" hidden>
+    <button class="mini-info" data-action="go-now" aria-label="Open Now Playing">
+      <span class="mini-name" id="mini-name"></span>
+      <span class="mini-status" id="mini-status"></span>
+    </button>
+    <button class="mini-toggle" id="mini-toggle" data-action="toggle" aria-label="Play or pause"></button>
+  </div>
+
+  <div id="sheet" class="sheet" hidden></div>
+
+  <audio id="audio" preload="none" playsinline></audio>
+  <noscript><p style="padding:24px;font-size:24px">Car Radio needs JavaScript turned on in Safari.</p></noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

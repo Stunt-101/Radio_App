@@ -1,0 +1,77 @@
+{
+  "_readme": "Genre mapping, read by both the site and tools/audit.mjs. Each sub-genre lists Radio Browser tags that map to it. Tags are compared after lowercasing and removing spaces and punctuation, so 'hip hop', 'hip-hop' and 'hiphop' are the same. Optional per sub-genre: 'pin' (station IDs that always come first, in this order), 'names' (text in the station name), 'countries' / 'excludeCountries' (2-letter codes), 'excludeTags', 'extra' (more rules with their own countries), 'prefer' (languages ranked first; can also be set on a category). After editing, run: node tools/audit.mjs",
+  "categories": [
+    {
+      "id": "sports",
+      "label": "Sports",
+      "icon": "⚽",
+      "subgenres": [
+        { "id": "soccer", "label": "Soccer",
+          "tags": ["soccer", "futbol", "fútbol", "futebol", "calcio", "fussball", "fußball", "voetbal", "premier league", "la liga", "liga mx", "bundesliga", "serie a", "champions league", "football commentary", "live football"],
+          "extra": [{ "tags": ["football"], "excludeCountries": ["US"] }],
+          "excludeTags": ["party", "hits", "partymusik", "schlager", "apres ski"],
+          "pin": ["9f5d0645-ae1e-4e9f-9b2f-91fa63d5b1fa", "fecf5be0-e69b-46fa-9a47-0029ae4849e0", "cae35448-1285-4f12-b3e0-2f4fdde00002"] },
+        { "id": "american-football", "label": "American football",
+          "tags": ["american football", "nfl", "college football", "ncaa football"],
+          "extra": [{ "tags": ["football"], "countries": ["US"] }] },
+        { "id": "basketball", "label": "Basketball", "tags": ["basketball", "nba", "college basketball", "baloncesto"] },
+        { "id": "baseball", "label": "Baseball", "tags": ["baseball", "mlb", "béisbol", "beisbol"] },
+        { "id": "hockey", "label": "Hockey", "tags": ["hockey", "ice hockey", "nhl", "eishockey"] },
+        { "id": "cricket", "label": "Cricket", "tags": ["cricket", "ipl"] },
+        { "id": "motorsport", "label": "Motorsport", "tags": ["motorsport", "motorsports", "formula 1", "formula one", "f1", "nascar", "motogp", "racing"] },
+        { "id": "sports-talk", "label": "Sports talk", "tags": ["sports", "sport", "sports talk", "sports news", "sportsradio", "sports radio", "deportes", "esportes", "desporto", "sportradio"],
+          "prefer": ["english"],
+          "pin": ["9f5d0645-ae1e-4e9f-9b2f-91fa63d5b1fa"] }
+      ]
+    },
+    {
+      "id": "news",
+      "label": "News",
+      "icon": "📰",
+      "prefer": ["english"],
+      "subgenres": [
+        { "id": "world-news", "label": "World", "tags": ["world news", "international news", "world service", "bbc world service", "global news"],
+          "names": ["world service", "voice of america", "radio france internationale", "rfi monde", "rfi afrique", "rfi anglais", "cgtn", "nhk world", "radio poland"],
+          "pin": ["598c4d0e-6b06-43fb-bff4-717c591213a9", "a6bc8a3b-67bf-4042-9af8-f7bad29f0734", "d1dd8875-3a1f-479a-ab5f-8bf37cf3d26b"] },
+        { "id": "us-news", "label": "U.S.", "tags": ["news", "news talk", "newstalk", "news radio", "npr news", "all news"], "countries": ["US"],
+          "pin": ["7ba4c184-fc2b-11e9-bbf2-52543be04c81", "66715d64-57e9-11ea-be63-52543be04c81"] },
+        { "id": "finance", "label": "Finance", "tags": ["finance", "financial", "financial news", "business news", "markets", "stock market", "stocks", "economy", "economics", "investing", "wall street", "bloomberg", "business and finance"],
+          "names": ["bloomberg", "cnbc", "wall street"],
+          "excludeNames": ["bloomberg tv"],
+          "pin": ["bed6056a-86b8-4f7f-92b7-e11f3c72d5e7", "691ffd8c-d8b0-42a0-a7ca-3d486e5e4ccd", "41f97373-cc33-4b6d-a8fb-456dc4e68966", "da3527f7-b71e-49e0-a9d5-57102350ffc5", "2992ab47-a3d5-4ab2-9881-bf7657fa1c03", "24f61d87-4a36-4db7-b80a-df96755e9b7f", "c0011c21-ee0c-4d23-9aba-76f563bd9e5b"] },
+        { "id": "politics", "label": "Politics", "tags": ["politics", "political", "political talk", "politik", "política", "politica", "government", "c-span"] },
+        { "id": "local-news", "label": "Local", "tags": ["local news", "community news", "regional news"], "countries": ["US"] }
+      ]
+    },
+    {
+      "id": "music",
+      "label": "Music",
+      "icon": "🎵",
+      "subgenres": [
+        { "id": "pop", "label": "Pop", "tags": ["pop", "top 40", "top40", "chart", "charts", "hits", "pop music", "adult contemporary"] },
+        { "id": "rock", "label": "Rock", "tags": ["rock", "classic rock", "alternative rock", "hard rock", "alternative", "indie rock", "rock music"] },
+        { "id": "hip-hop", "label": "Hip-hop", "tags": ["hip hop", "hiphop", "rap", "r&b", "rnb", "urban", "trap"] },
+        { "id": "country", "label": "Country", "tags": ["country", "country music", "bluegrass", "americana", "new country", "classic country"] },
+        { "id": "jazz", "label": "Jazz", "tags": ["jazz", "smooth jazz", "swing", "bebop", "jazz fusion"] },
+        { "id": "classical", "label": "Classical", "tags": ["classical", "classical music", "klassik", "clasica", "clásica", "classique", "opera", "baroque", "symphony"] },
+        { "id": "electronic", "label": "Electronic", "tags": ["electronic", "edm", "dance", "house", "techno", "trance", "electro", "drum and bass", "dnb", "ambient", "chillout", "lounge"] },
+        { "id": "latin", "label": "Latin", "tags": ["latin", "latino", "latina", "salsa", "reggaeton", "bachata", "cumbia", "merengue", "latin pop", "regional mexicano", "tropical", "musica latina"] },
+        { "id": "oldies", "label": "Oldies", "tags": ["oldies", "50s", "60s", "70s", "classic hits", "golden oldies", "oldies but goldies"] }
+      ]
+    },
+    {
+      "id": "talk",
+      "label": "Talk",
+      "icon": "🎙️",
+      "prefer": ["english"],
+      "subgenres": [
+        { "id": "public-radio", "label": "Public radio", "tags": ["public radio", "npr", "pbs", "public broadcasting"],
+          "pin": ["7ba4c184-fc2b-11e9-bbf2-52543be04c81", "66715d64-57e9-11ea-be63-52543be04c81"] },
+        { "id": "comedy", "label": "Comedy", "tags": ["comedy", "humor", "humour", "stand up", "standup", "funny"] },
+        { "id": "culture", "label": "Culture", "tags": ["culture", "arts", "cultural", "kultur", "cultura", "literature", "books", "history"] },
+        { "id": "religion", "label": "Religion", "tags": ["religion", "religious", "christian", "christian talk", "gospel", "catholic", "islam", "islamic", "quran", "church", "worship", "bible", "spiritual", "jewish"] },
+        { "id": "business-talk", "label": "Business talk", "tags": ["business", "business talk", "entrepreneur", "money talk", "personal finance"] }
+      ]
+    }
+  ]
+}

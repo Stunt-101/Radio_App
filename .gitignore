@@ -1,0 +1,6 @@
+# Local-only files
+.DS_Store
+.claude/
+audit/.cache/
+# Your design doc stays on your Mac: GitHub Pages repos are public.
+DESIGN.md
