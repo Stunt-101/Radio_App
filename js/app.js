@@ -26,7 +26,11 @@ const I = {
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const logo = (st, cls = 'logo') => `<span class="${cls}">${st.favicon ? `<img src="${esc(st.favicon)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith('📻')">` : '📻'}</span>`;
-const meta = st => [st.country, st.language, st.codec && st.bitrate ? `${st.codec} ${st.bitrate}k` : st.codec].filter(Boolean).map(esc).join(' · ');
+const codecLabel = c => (/^HLS/i.test(c || '') ? 'HLS' : /AAC|MP4/i.test(c || '') ? 'AAC' : /MP3/i.test(c || '') ? 'MP3' : '');
+const meta = st => {
+  const c = codecLabel(st.codec), kbps = st.bitrate > 0 && st.bitrate <= 320 ? `${st.bitrate}k` : '';
+  return [st.country, st.language, [c, kbps].filter(Boolean).join(' ')].filter(Boolean).map(esc).join(' · ');
+};
 const backBtn = '<button class="icon-btn" data-action="back" aria-label="Back">' + I.back + '</button>';
 
 // ---------- Playing things ----------
